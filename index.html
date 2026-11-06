@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>AREHAN • چت خصوصی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b1220;--panel:#111c2e;--panel2:#17243a;--line:#263750;--text:#edf3ff;--muted:#8ea2bd;--pink:#ff6e9e;--pink2:#ff9cbd;--bubble:#1c2d45;--mine:linear-gradient(135deg,#b94178,#e45f91);--green:#62d6ad}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 10%,#34203b 0,transparent 30%),radial-gradient(circle at 90% 85%,#132f46 0,transparent 30%),var(--bg);color:var(--text);font-family:Vazirmatn,Tahoma,sans-serif;min-height:100vh;display:grid;place-items:center;padding:18px}
+.app{width:min(1120px,100%);height:min(790px,calc(100vh - 36px));min-height:590px;display:grid;grid-template-columns:310px 1fr;background:#0e1929eF;border:1px solid #31415a;border-radius:28px;overflow:hidden;box-shadow:0 30px 100px #0008;backdrop-filter:blur(18px)}
+.sidebar{background:#101b2c;border-left:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
+.brand{padding:22px 22px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line)}
+.logo{width:46px;height:46px;border-radius:16px;background:linear-gradient(145deg,#ff78a7,#9e3f83);display:grid;place-items:center;font-size:23px;box-shadow:0 8px 25px #ed5e963b}
+.brand strong{font-size:18px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.search{margin:16px;padding:12px 14px;background:#17243a;border:1px solid #273a55;border-radius:14px;color:var(--muted);font-size:13px}
+.chat-preview{margin:0 10px;padding:14px 12px;display:flex;gap:12px;align-items:center;border-radius:17px;background:linear-gradient(110deg,#43243e,#20273e);border:1px solid #74405f}
+.avatar{width:48px;height:48px;flex:none;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#ff9cbd,#9c4d9b);font-size:23px;border:2px solid #ffffff22}
+.preview-text{min-width:0;flex:1}.preview-text b{font-size:14px}.preview-text small{display:block;color:#c3b4c6;font-size:11px;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.badge{font-size:10px;color:#ffd5e4;background:#713451;padding:4px 8px;border-radius:20px}
+.side-bottom{margin-top:auto;padding:18px;color:#7488a3;font-size:11px;line-height:2}
+.main{display:flex;flex-direction:column;min-width:0;position:relative;background:radial-gradient(circle at 50% 40%,#1a2940 0,transparent 55%)}
+.topbar{height:82px;padding:14px 22px;display:flex;align-items:center;gap:13px;border-bottom:1px solid var(--line);background:#101b2bd9}
+.topbar .avatar{width:44px;height:44px}.person{flex:1}.person b{font-size:15px}.person small{display:block;color:var(--green);font-size:11px;margin-top:3px}
+.top-actions{display:flex;gap:8px}.iconbtn{width:38px;height:38px;border:1px solid #2a3c55;border-radius:13px;background:#17243a;color:#b9c8dc;font-size:16px}
+.messages{flex:1;overflow:auto;padding:26px clamp(14px,4vw,48px);display:flex;flex-direction:column;gap:13px}
+.date-pill{align-self:center;color:#a9b7cb;background:#1a2940;border:1px solid #2b3d56;border-radius:30px;padding:6px 14px;font-size:10px;margin-bottom:8px}
+.msg{max-width:min(78%,510px);padding:11px 14px 8px;border-radius:18px;background:var(--bubble);border:1px solid #2b405c;box-shadow:0 5px 15px #0002;align-self:flex-start;line-height:1.8;word-break:break-word;white-space:pre-wrap}
+.msg.mine{align-self:flex-end;background:var(--mine);border-color:#e77ba6;border-bottom-right-radius:5px}
+.msg.theirs{border-bottom-left-radius:5px}
+.meta{display:flex;justify-content:flex-end;gap:6px;font-size:9px;color:#e8c7d6;margin-top:4px;opacity:.8}
+.theirs .meta{color:#9eb0c8}
+.composer-wrap{padding:14px 20px 18px;border-top:1px solid var(--line);background:#101b2beF}
+.composer{display:flex;align-items:flex-end;gap:10px;padding:9px;background:#192840;border:1px solid #31435f;border-radius:20px}
+.composer textarea{resize:none;max-height:110px;min-height:42px;flex:1;background:transparent;border:0;outline:0;color:var(--text);font:14px Vazirmatn;padding:9px}
+.composer textarea::placeholder{color:#8093ad}
+.send{width:44px;height:44px;border:0;border-radius:15px;background:linear-gradient(135deg,#ff80aa,#d84e8a);color:white;font-size:19px;box-shadow:0 7px 20px #e65d963d}
+.hint{text-align:center;color:#6f849f;font-size:10px;margin-top:9px}
+.login{position:absolute;inset:0;background:#0b1423f5;z-index:5;display:grid;place-items:center;padding:20px}
+.login-card{width:min(390px,100%);padding:30px 24px;border:1px solid #34425a;border-radius:25px;background:linear-gradient(145deg,#18253a,#111b2c);text-align:center;box-shadow:0 25px 70px #0008}
+.login-card .logo{margin:0 auto 14px;width:58px;height:58px;font-size:27px}.login-card h1{font-size:24px;margin:8px 0}.login-card p{font-size:12px;color:var(--muted);line-height:2;margin-bottom:20px}
+.field{width:100%;padding:13px 14px;margin:6px 0;background:#0d1828;border:1px solid #34445e;border-radius:13px;color:white;font:13px Vazirmatn;outline:0}
+.login-btn{width:100%;padding:13px;border:0;border-radius:13px;background:linear-gradient(135deg,#ff80aa,#d84e8a);color:#fff;font:700 14px Vazirmatn;margin-top:10px}
+.status{font-size:11px;color:#ffb8ce;min-height:22px;margin-top:10px;line-height:1.8}
+.config-note{font-size:10px!important;color:#ffcf9d!important;margin-top:14px!important}
+.empty{margin:auto;text-align:center;color:#8ea2bd;line-height:2}.empty span{font-size:42px;display:block;margin-bottom:10px}
+@media(max-width:700px){body{padding:0}.app{height:100dvh;min-height:0;border-radius:0;border:0;grid-template-columns:1fr}.sidebar{display:none}.topbar{height:72px;padding:10px 14px}.messages{padding:18px 13px}.msg{max-width:88%}.composer-wrap{padding:10px 11px 13px}.top-actions .iconbtn:nth-child(2){display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="logo">♥</div><div><strong>AREHAN</strong><small>گوشه‌ی دونفره‌ی ما</small></div></div>
+    <div class="search">⌕ &nbsp; جست‌وجو در گفتگو</div>
+    <div class="chat-preview"><div class="avatar">💗</div><div class="preview-text"><b>آرش و هانیه</b><small id="lastPreview">اینجا فقط گفت‌وگوی ماست…</small></div><span class="badge">خصوصی</span></div>
+    <div class="side-bottom">یک فضای کوچیک برای حرف‌های بزرگ…<br>🔒 این گفتگو فقط برای دو حساب مجاز طراحی شده.</div>
+  </aside>
+  <section class="main">
+    <header class="topbar">
+      <div class="avatar">💗</div><div class="person"><b>آرش و هانیه</b><small id="connection">چت اختصاصی دو نفره</small></div>
+      <div class="top-actions"><button class="iconbtn" title="اطلاعات">ⓘ</button><button class="iconbtn" title="بیشتر">⋯</button></div>
+    </header>
+    <div class="messages" id="messages"><div class="date-pill">شروع یک گفت‌وگوی اختصاصی ✨</div><div class="empty"><span>💬</span>اولین پیام قشنگتون رو اینجا بنویسید</div></div>
+    <div class="composer-wrap"><div class="composer"><textarea id="messageInput" rows="1" placeholder="پیامت رو بنویس…"></textarea><button class="send" id="sendBtn" title="ارسال">➤</button></div><div class="hint">Enter برای ارسال • Shift + Enter برای خط جدید</div></div>
+    <div class="login" id="login">
+      <div class="login-card"><div class="logo">♥</div><h1>به آرهان خوش اومدی</h1><p>یه فضای خصوصی برای آرش و هانیه؛<br>با حساب کاربری خودت وارد شو.</p>
+        <input class="field" id="email" type="email" placeholder="ایمیل">
+        <input class="field" id="password" type="password" placeholder="رمز عبور">
+        <button class="login-btn" id="loginBtn">ورود به گفت‌وگو</button>
+        <div class="status" id="loginStatus"></div>
+        <p class="config-note">برای فعال شدن چت واقعی، تنظیمات Firebase طبق فایل راهنما باید تکمیل شود.</p>
+      </div>
+    </div>
+  </section>
+</div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+// 1) اطلاعات پروژه Firebase را از کنسول خودت اینجا قرار بده.
+const firebaseConfig = {
+  apiKey: "AIzaSyB-DGjZnGoJELdVyDr3aKjjadp-oQq2XMY",
+  authDomain: "arhan-581cb.firebaseapp.com",
+  projectId: "arhan-581cb",
+  storageBucket: "arhan-581cb.firebasestorage.app",
+  messagingSenderId: "753684109503",
+  appId: "1:753684109503:web:21b1da63f82681daa8ce0a",
+  measurementId: "G-DD8YTX1M5P"
+};
+// فقط همین دو حساب اجازه ورود دارند؛ کنترل اصلی دسترسی در Firestore Rules است.
+const allowedUsers = {
+  "AnMaRFMEvBNKxhGuhXL70QfPkYI2": "هانیه",
+  "QSf1qEsjI6M7J9fYOo72x9pd6OF3": "آرش"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const login = document.getElementById("login"), status = document.getElementById("loginStatus");
+const messagesEl = document.getElementById("messages"), input = document.getElementById("messageInput");
+let stopMessages = null, currentUser = null;
+
+document.getElementById("loginBtn").onclick = async () => {
+  status.textContent = "در حال ورود…";
+  try { await signInWithEmailAndPassword(auth, document.getElementById("email").value.trim(), document.getElementById("password").value); }
+  catch(e) { status.textContent = "ورود انجام نشد؛ ایمیل، رمز و تنظیمات Firebase را بررسی کن."; }
+};
+onAuthStateChanged(auth, user => {
+  if (stopMessages) { stopMessages(); stopMessages = null; }
+  currentUser = user;
+  if (!user) { login.style.display = "grid"; return; }
+  if (!Object.prototype.hasOwnProperty.call(allowedUsers, user.uid)) {
+    signOut(auth); status.textContent = "این حساب اجازه ورود به گفت‌وگوی آرهان را ندارد."; login.style.display = "grid"; return;
+  }
+  login.style.display = "none";
+  document.getElementById("connection").textContent = "● متصل شدی";
+  const q = query(collection(db, "messages"), orderBy("createdAt", "asc"));
+  stopMessages = onSnapshot(q, snap => {
+    messagesEl.innerHTML = '<div class="date-pill">گفت‌وگوی آرش و هانیه ✨</div>';
+    if (snap.empty) messagesEl.innerHTML += '<div class="empty"><span>💬</span>اولین پیام قشنگتون رو اینجا بنویسید</div>';
+    snap.forEach(d => {
+      const m = d.data(), mine = m.uid === currentUser.uid;
+      const el = document.createElement("div"); el.className = "msg " + (mine ? "mine" : "theirs");
+      const body = document.createElement("div"); body.textContent = m.text || "";
+      const meta = document.createElement("div"); meta.className = "meta";
+      const date = m.createdAt?.toDate ? m.createdAt.toDate() : new Date();
+      meta.textContent = (allowedUsers[m.uid] || (mine ? "شما" : "کاربر")) + " · " + date.toLocaleTimeString("fa-IR",{hour:"2-digit",minute:"2-digit"});
+      el.append(body,meta); messagesEl.appendChild(el);
+    });
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    const last = snap.docs[snap.docs.length-1]?.data()?.text;
+    document.getElementById("lastPreview").textContent = last || "اینجا فقط گفت‌وگوی ماست…";
+  }, err => { document.getElementById("connection").textContent = "خطا در اتصال به گفتگو"; });
+});
+async function sendMessage(){
+  const text = input.value.trim(); if(!text || !currentUser) return;
+  input.value = "";
+  try { await addDoc(collection(db,"messages"), {text, uid:currentUser.uid, email:currentUser.email, createdAt:serverTimestamp()}); }
+  catch(e) { status.textContent = "ارسال پیام ناموفق بود؛ تنظیمات دیتابیس را بررسی کن."; }
+}
+document.getElementById("sendBtn").onclick = sendMessage;
+input.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMessage();}});
+</script>
+</body>
+</html>
